@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
+const https = require("https");
 
 const app = express();
 
@@ -35,12 +36,12 @@ app.post("/", function (req, res) {
         url: "http://us18.api.mailchimp.com/3.0/lists/9c5bc8e891",
         method: "POST",
         headers: {
-            Authorization: "sanjana 1eac024ee0b790f5a00541b983c32668-us18",
+            Authorization: "sanjana2319 1eac024ee0b790f5a00541b983c32668-us18",
         },
         body: jsonData,
     };
 
-    request(options, function (error, response, body) {
+    const request(options, function (error, response, body) {
         if (error) {
             res.sendFile(__dirname + "/failure.html");
         } else {
