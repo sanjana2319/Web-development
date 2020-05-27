@@ -21,7 +21,7 @@ app.post("/", function (req, res) {
         members: [
             {
                 email_address: email,
-                status: "subcribed",
+                status: "subscribed",
                 merge_fields: {
                     FNAME: firstName,
                     LNAME: lastName,
@@ -36,18 +36,20 @@ app.post("/", function (req, res) {
         url: "http://us18.api.mailchimp.com/3.0/lists/9c5bc8e891",
         method: "POST",
         headers: {
-            Authorization: "sanjana2319 1eac024ee0b790f5a00541b983c32668-us18",
+            "Authorization": "sanjana2319 1eac024ee0b790f5a00541b983c32668-us18",
         },
         body: jsonData,
     };
 
-    const request(options, function (error, response, body) {
+    request(options, function (error, response, body) {
         if (error) {
+            console.log("error");
             res.sendFile(__dirname + "/failure.html");
         } else {
             if (response.statusCode === 200) {
                 res.sendFile(__dirname + "/success.html");
             } else {
+                console.log(response.statusCode);
                 res.sendFile(__dirname + "/failure.html");
             }
         }
