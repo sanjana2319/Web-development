@@ -22,7 +22,7 @@ app.get("/", function (req, res) {
 
 app.post("/", function (req, res) {
     const item = req.body.newItem;
-    if (req.body === "Work") {
+    if (req.body.list === "Work") {
         workItems.push(item);
         res.redirect("/work");
     } else {
@@ -35,11 +35,11 @@ app.get("/work", function (req, res) {
     res.render("list", { listTitle: "Work List", newListItems: workItems });
 });
 
-app.post("/", function (req, res) {
-    const item = req.body.newListItems;
-    workItems.push(item);
-    res.redirect("/work");
-});
+// app.post("/", function (req, res) {
+//     const item = req.body.newItem;
+//     workItems.push(item);
+//     res.redirect("/work");
+// });
 app.get("/about", function (req, res) {
     res.render("about");
 });
